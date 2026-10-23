@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>OLT Monitoring — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- Loader awal: video logo + persen 0-100 -->
+<div id="loader" class="loader">
+  <svg id="loader-logo" viewBox="-30 0 180 120" width="225" height="150" style="overflow:visible" aria-hidden="true">
+    <circle class="ll-arc" cx="60" cy="54" r="40" fill="none" stroke="#22C3F0" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="78 100"/>
+    <circle class="ll-dot" cx="92" cy="30" r="6" fill="#22C3F0"/>
+    <rect class="ll-box" x="34" y="38" width="52" height="16" rx="3" fill="#0B1B33"/>
+    <g class="ll-led" fill="#fff"><rect x="66" y="43" width="3" height="6" rx="1"/><rect x="71" y="43" width="3" height="6" rx="1"/><rect x="76" y="43" width="3" height="6" rx="1"/></g>
+    <g class="ll-lines" stroke="#1E4FD8" stroke-width="3" fill="none" stroke-linecap="round">
+      <path pathLength="1" d="M46 54v10l-10 10"/><path pathLength="1" d="M55 54v24"/><path pathLength="1" d="M65 54v24"/><path pathLength="1" d="M74 54v10l10 10"/>
+    </g>
+    <g class="ll-nodes" fill="#1E4FD8"><circle cx="36" cy="76" r="4"/><circle cx="55" cy="82" r="4"/><circle cx="65" cy="82" r="4"/><circle cx="84" cy="76" r="4"/></g>
+    <text class="ll-text" x="60" y="108" text-anchor="middle" font-family="Sora,Arial,sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="#0B1B33">OLT MONITORING</text>
+  </svg>
+  <video id="loader-video" muted playsinline autoplay preload="auto"></video>
+  <div class="loader-pct mono"><span id="loader-num">0</span>%</div>
+  <div class="loader-bar"><i id="loader-fill"></i></div>
+</div>
+
+<!-- Halaman login -->
+<section id="login" class="login" hidden>
+  <div class="login-card">
+    <img id="login-logo" alt="OLT Monitoring" class="login-logo">
+    <h1>Masuk</h1>
+    <p class="muted">Khusus pengguna terdaftar.</p>
+    <button id="btn-google" class="btn btn-primary btn-block" type="button">Masuk dengan Google</button>
+    <div class="or"><span>atau</span></div>
+    <form id="form-email">
+      <label>Email<input type="email" id="in-email" required autocomplete="username"></label>
+      <label>Password<input type="password" id="in-pass" required autocomplete="current-password"></label>
+      <button class="btn btn-block" type="submit">Masuk dengan email</button>
+    </form>
+    <p id="login-msg" class="msg" role="alert"></p>
+  </div>
+</section>
+
+<!-- Aplikasi -->
+<div id="app" class="app" hidden>
+  <nav class="side" aria-label="Menu utama">
+    <a href="#/" class="brand"><img id="side-logo" alt="OLT Monitoring"></a>
+    <div class="nav-group">
+      <span class="nav-label">BERANDA</span>
+      <a href="#/" data-nav="/">Ringkasan</a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-label">DATA GGN</span>
+      <a href="#/ggn" data-nav="/ggn">Dashboard</a>
+      <a href="#/ggn/input" data-nav="/ggn/input" data-admin>Input Gangguan</a>
+      <a href="#/ggn/laporan" data-nav="/ggn/laporan">Laporan Sore</a>
+      <a href="#/ggn/data" data-nav="/ggn/data">Semua Data</a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-label">GCU</span>
+      <a href="#/gcu" data-nav="/gcu">Dashboard</a>
+      <a href="#/gcu/input" data-nav="/gcu/input" data-admin>Input GCU</a>
+      <a href="#/gcu/laporan" data-nav="/gcu/laporan">Laporan Pagi</a>
+    </div>
+    <div class="demo-badge">MODE DEMO · data fiktif</div>
+    <div class="side-foot">
+      <div class="who"><span id="who-init" class="avatar">?</span><span><b id="who-name"></b><small id="who-role"></small></span></div>
+      <button id="btn-logout" class="btn btn-ghost btn-sm" type="button">Keluar</button>
+    </div>
+  </nav>
+  <main id="view" class="main" tabindex="-1"></main>
+</div>
+
+<!-- Panel rincian (saat grafik diklik) -->
+<aside id="drawer" class="drawer" hidden aria-label="Rincian">
+  <div class="drawer-head"><h2 id="drawer-title"></h2><button id="drawer-close" class="btn btn-ghost btn-sm" type="button" aria-label="Tutup">Tutup</button></div>
+  <div id="drawer-body" class="drawer-body"></div>
+</aside>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="js/mock-supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
