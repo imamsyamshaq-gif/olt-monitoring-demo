@@ -21,7 +21,9 @@ function maybeHideLoader() {
 function startLoader() {
   const v = $('#loader-video');
   const finish = () => { loader.videoDone = true; maybeHideLoader(); };
-  if (!CONFIG.LOADER_VIDEO) { v.remove(); setTimeout(finish, 1200); return; }
+  if (!CONFIG.LOADER_VIDEO) { v.remove(); setTimeout(finish, 2600); }
+  else $('#loader-logo')?.remove();
+  if (!CONFIG.LOADER_VIDEO) { const tick = setInterval(() => { if (loader.pct < 85) setPct(loader.pct + 4); else clearInterval(tick); }, 90); return; }
   v.src = CONFIG.LOADER_VIDEO;
   v.addEventListener('ended', finish);          // berhenti di frame terakhir sampai data siap
   v.addEventListener('error', finish);

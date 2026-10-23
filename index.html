@@ -13,6 +13,17 @@
 
 <!-- Loader awal: video logo + persen 0-100 -->
 <div id="loader" class="loader">
+  <svg id="loader-logo" viewBox="0 0 120 120" width="150" height="150" aria-hidden="true">
+    <circle class="ll-arc" cx="60" cy="54" r="40" fill="none" stroke="#22C3F0" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="78 100"/>
+    <circle class="ll-dot" cx="92" cy="30" r="6" fill="#22C3F0"/>
+    <rect class="ll-box" x="34" y="38" width="52" height="16" rx="3" fill="#0B1B33"/>
+    <g class="ll-led" fill="#fff"><rect x="66" y="43" width="3" height="6" rx="1"/><rect x="71" y="43" width="3" height="6" rx="1"/><rect x="76" y="43" width="3" height="6" rx="1"/></g>
+    <g class="ll-lines" stroke="#1E4FD8" stroke-width="3" fill="none" stroke-linecap="round">
+      <path pathLength="1" d="M46 54v10l-10 10"/><path pathLength="1" d="M55 54v24"/><path pathLength="1" d="M65 54v24"/><path pathLength="1" d="M74 54v10l10 10"/>
+    </g>
+    <g class="ll-nodes" fill="#1E4FD8"><circle cx="36" cy="76" r="4"/><circle cx="55" cy="82" r="4"/><circle cx="65" cy="82" r="4"/><circle cx="84" cy="76" r="4"/></g>
+    <text class="ll-text" x="60" y="108" text-anchor="middle" font-family="Sora,Arial,sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="#0B1B33">OLT MONITORING</text>
+  </svg>
   <video id="loader-video" muted playsinline autoplay preload="auto"></video>
   <div class="loader-pct mono"><span id="loader-num">0</span>%</div>
   <div class="loader-bar"><i id="loader-fill"></i></div>
