@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>OLT Monitoring — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- Loader awal: video logo + persen 0-100 -->
+<div id="loader" class="loader">
+  <video id="loader-video" muted playsinline autoplay preload="auto"></video>
+  <div class="loader-pct mono"><span id="loader-num">0</span>%</div>
+  <div class="loader-bar"><i id="loader-fill"></i></div>
+</div>
+
+<!-- Halaman login -->
+<section id="login" class="login" hidden>
+  <div class="login-card">
+    <img id="login-logo" alt="OLT Monitoring" class="login-logo">
+    <h1>Masuk</h1>
+    <p class="muted">Khusus pengguna terdaftar.</p>
+    <button id="btn-google" class="btn btn-primary btn-block" type="button">Masuk dengan Google</button>
+    <div class="or"><span>atau</span></div>
+    <form id="form-email">
+      <label>Email<input type="email" id="in-email" required autocomplete="username"></label>
+      <label>Password<input type="password" id="in-pass" required autocomplete="current-password"></label>
+      <button class="btn btn-block" type="submit">Masuk dengan email</button>
+    </form>
+    <p id="login-msg" class="msg" role="alert"></p>
+  </div>
+</section>
+
+<!-- Aplikasi -->
+<div id="app" class="app" hidden>
+  <nav class="side" aria-label="Menu utama">
+    <a href="#/" class="brand"><img id="side-logo" alt="OLT Monitoring"></a>
+    <div class="nav-group">
+      <span class="nav-label">BERANDA</span>
+      <a href="#/" data-nav="/">Ringkasan</a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-label">DATA GGN</span>
+      <a href="#/ggn" data-nav="/ggn">Dashboard</a>
+      <a href="#/ggn/input" data-nav="/ggn/input" data-admin>Input Gangguan</a>
+      <a href="#/ggn/laporan" data-nav="/ggn/laporan">Laporan Sore</a>
+      <a href="#/ggn/data" data-nav="/ggn/data">Semua Data</a>
+    </div>
+    <div class="nav-group">
+      <span class="nav-label">GCU</span>
+      <a href="#/gcu" data-nav="/gcu">Dashboard</a>
+      <a href="#/gcu/input" data-nav="/gcu/input" data-admin>Input GCU</a>
+      <a href="#/gcu/laporan" data-nav="/gcu/laporan">Laporan Pagi</a>
+    </div>
+    <div class="demo-badge">MODE DEMO · data fiktif</div>
+    <div class="side-foot">
+      <div class="who"><span id="who-init" class="avatar">?</span><span><b id="who-name"></b><small id="who-role"></small></span></div>
+      <button id="btn-logout" class="btn btn-ghost btn-sm" type="button">Keluar</button>
+    </div>
+  </nav>
+  <main id="view" class="main" tabindex="-1"></main>
+</div>
+
+<!-- Panel rincian (saat grafik diklik) -->
+<aside id="drawer" class="drawer" hidden aria-label="Rincian">
+  <div class="drawer-head"><h2 id="drawer-title"></h2><button id="drawer-close" class="btn btn-ghost btn-sm" type="button" aria-label="Tutup">Tutup</button></div>
+  <div id="drawer-body" class="drawer-body"></div>
+</aside>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="js/mock-supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
